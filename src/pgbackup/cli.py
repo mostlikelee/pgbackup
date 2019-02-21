@@ -35,7 +35,7 @@ def main():
         client = boto3.client('s3')
         timestamp = time.strftime("%Y-%m-%dT%H:%M", time.localtime())
         file_name = pgdump.dump_file_name(args.url, timestamp)
-        print("backing database up to %s in S3 as %s" % (args.url, timestamp))
+        print("backing database up to %s in S3 as %s" % (args.url, file_name))
         storage.s3(client, dump.stdout, args.destination, file_name)
     else:
         outfile = open(args.destination, 'w')
